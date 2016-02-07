@@ -110,4 +110,5 @@ aggregate_data <- aggregate (steps ~ interval + day, pa1_filled,mean)
 aggregate_data <- transform(aggregate_data, day = factor(day))
 xyplot(steps ~ interval | day, data = aggregate_data, type = "l", layout = c(1,2))
 ```
+
 We notice that during weekdays the activity is more concentrated in the morning, while during weekends steps are spread more evenly over the day.

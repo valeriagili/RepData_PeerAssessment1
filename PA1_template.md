@@ -76,7 +76,7 @@ plot(unique(pa1_data$interval), steps_per_int, type = "l", main = "Average Steps
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
 
-We see from the graphics that on the average, the maximum number of steps is taken in the morning, between 8am and 9am. To get the exact value we select the maximun averaged steps, then subset the vector containing the  
+We see from the graphics that on the average, the maximum number of steps is taken in the morning, between 8am and 9am. To get the exact value we select the maximum averaged steps, then subset the vector containing the  
 
 ```r
 m <- max(steps_per_int)
@@ -93,7 +93,7 @@ On the average the maximum number of steps (206) is taken in the interval betwee
 
 ## Imputing missing values
 
-Let's compute the total number of missing values in the dataframe
+Let's compute the total number of missing values in the data frame
 
 ```r
 sum(is.na(pa1_data$steps))
@@ -120,7 +120,7 @@ sum(is.na(pa1_data$interval))
 ## [1] 0
 ```
 
-Let's fill in all the missing values in the dataset by replacing each NA with the average value for that interval computed across all days:
+Let's fill in all the missing values in the data set by replacing each NA with the average value for that interval computed across all days:
 
 ```r
 pa1_filled <- pa1_data
@@ -156,6 +156,8 @@ median(steps_per_day_2)
 ```
 ## [1] 10766.19
 ```
+We notice just a slight modification of the median value, which makes sense because with the choice made above we are replacing the missing total steps per day values with the average value itself.
+
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -181,3 +183,4 @@ xyplot(steps ~ interval | day, data = aggregate_data, type = "l", layout = c(1,2
 
 ![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
 
+We notice that during weekdays the activity is more concentrated in the morning, while during weekends steps are spread more evenly over the day.
