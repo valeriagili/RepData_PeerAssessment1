@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -45,7 +50,7 @@ steps_per_day <- tapply(pa1_data$steps, as.character(pa1_data$date), sum)
 barplot(steps_per_day, col = "lightblue", main = "Total steps per day", xlab = "Day", ylab = "Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 The mean and median total number of steps taken per day are (let's remove the missing values to get a meaningful result. Leaving na.rm = FALSE as of default would provide NA values both for the mean and for the median):
 
@@ -71,10 +76,11 @@ Let's plot the number of steps taken averaged across all days vs the 5 minute in
 
 ```r
 steps_per_int <- tapply(pa1_data$steps, pa1_data$interval, mean, na.rm=TRUE)
-plot(unique(pa1_data$interval), steps_per_int, type = "l", main = "Average Steps (over all days) vs. Interval", xlab = "Interval", ylab = "Average Number of Steps")
+plot(unique(pa1_data$interval), steps_per_int, type = "l", main = "Average Steps (over 
+     all days) vs. Interval", xlab = "Interval", ylab = "Average Number of Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 
 We see from the graphics that on the average, the maximum number of steps is taken in the morning, between 8am and 9am. To get the exact value we select the maximum averaged steps, then subset the vector containing the  
 
@@ -134,10 +140,11 @@ Now let's make an histogram of the total number of steps taken each day with the
 
 ```r
 steps_per_day_2 <- tapply(pa1_filled$steps, as.character(pa1_filled$date), sum)
-barplot(steps_per_day_2, col = "lightblue", main = "Total steps per day (missing values filled with averaged data)", xlab = "Day", ylab = "Steps")
+barplot(steps_per_day_2, col = "lightblue", main = "Total steps per day (missing values 
+        filled with averaged data)", xlab = "Day", ylab = "Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
 
 After filling the missing values in with averaged data, the mean and median total number of steps taken per day are:
 
@@ -181,6 +188,6 @@ aggregate_data <- transform(aggregate_data, day = factor(day))
 xyplot(steps ~ interval | day, data = aggregate_data, type = "l", layout = c(1,2))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
 
 We notice that during weekdays the activity is more concentrated in the morning, while during weekends steps are spread more evenly over the day.

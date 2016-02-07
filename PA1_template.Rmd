@@ -44,7 +44,8 @@ median(steps_per_day, na.rm = TRUE)
 Let's plot the number of steps taken averaged across all days vs the 5 minute intervals  (I remove missing values when taking the average across all days):
 ```{r, echo = TRUE}
 steps_per_int <- tapply(pa1_data$steps, pa1_data$interval, mean, na.rm=TRUE)
-plot(unique(pa1_data$interval), steps_per_int, type = "l", main = "Average Steps (over all days) vs. Interval", xlab = "Interval", ylab = "Average Number of Steps")
+plot(unique(pa1_data$interval), steps_per_int, type = "l", main = "Average Steps (over 
+     all days) vs. Interval", xlab = "Interval", ylab = "Average Number of Steps")
 ```
 
 We see from the graphics that on the average, the maximum number of steps is taken in the morning, between 8am and 9am. To get the exact value we select the maximum averaged steps, then subset the vector containing the  
@@ -80,7 +81,8 @@ for(i in 1:nrow(pa1_filled)) {
 Now let's make an histogram of the total number of steps taken each day with the new data
 ```{r, echo=TRUE}
 steps_per_day_2 <- tapply(pa1_filled$steps, as.character(pa1_filled$date), sum)
-barplot(steps_per_day_2, col = "lightblue", main = "Total steps per day (missing values filled with averaged data)", xlab = "Day", ylab = "Steps")
+barplot(steps_per_day_2, col = "lightblue", main = "Total steps per day (missing values 
+        filled with averaged data)", xlab = "Day", ylab = "Steps")
 ```
 
 After filling the missing values in with averaged data, the mean and median total number of steps taken per day are:
